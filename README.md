@@ -103,7 +103,7 @@ mvn clean install -DskipTests
 Once you've installed IRIDA as a dependency, you can proceed to building this plugin. Please run the following commands:
 
 ```bash
-cd irida-plugin-tetyper
+cd irida-plugin-tbprofiler
 
 mvn clean package
 ```
