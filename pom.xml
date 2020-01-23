@@ -6,7 +6,7 @@
 
 	<groupId>org.publichealthbioinformatics</groupId>
 	<artifactId>irida-plugin-tbprofiler</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.0</version>
 
 	<!-- Please fill out these properties with information about your particular plugin -->
 	<properties>
