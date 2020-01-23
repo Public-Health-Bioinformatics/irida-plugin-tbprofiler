@@ -1,0 +1,137 @@
+{
+  "uuid" : "d9409fe6-48f7-491c-aff2-56145185599f",
+  "tags" : [ ],
+  "format-version" : "0.1",
+  "name" : "tbprofiler",
+  "version" : 1,
+  "steps" : {
+    "0" : {
+      "workflow_outputs" : [ {
+        "output_name" : "output",
+        "uuid" : "3f5fa32e-78eb-4f70-a5d0-8dfb187e6907",
+        "label" : null
+      } ],
+      "input_connections" : { },
+      "label" : "sequence_reads_paired",
+      "id" : 0,
+      "tool_state" : "{\"collection_type\": \"list:paired\", \"name\": \"sequence_reads_paired\"}",
+      "errors" : null,
+      "position" : {
+        "top" : 159.5,
+        "left" : 183
+      },
+      "name" : "Input dataset collection",
+      "uuid" : "a94360e2-3d90-40a5-9739-b23c478eacb0",
+      "outputs" : [ ],
+      "type" : "data_collection_input",
+      "tool_version" : null,
+      "annotation" : "",
+      "inputs" : [ {
+        "name" : "sequence_reads_paired",
+        "description" : ""
+      } ],
+      "content_id" : null,
+      "tool_id" : null
+    },
+    "1" : {
+      "workflow_outputs" : [ {
+        "output_name" : "output_bam",
+        "uuid" : "cb26fdc2-7af2-4b9b-91fd-b91e62f8b980",
+        "label" : null
+      }, {
+        "output_name" : "output_txt",
+        "uuid" : "026c4303-2274-40c2-a8f6-effe410b123a",
+        "label" : null
+      }, {
+        "output_name" : "output_vcf",
+        "uuid" : "9f86ab04-524e-457b-ab47-9a6b58364059",
+        "label" : null
+      }, {
+        "output_name" : "results_json",
+        "uuid" : "eba4ca76-1a06-4773-a6eb-bc788116010a",
+        "label" : null
+      } ],
+      "input_connections" : {
+        "fastq_or_bam|fastq_collection" : {
+          "output_name" : "output",
+          "id" : 0
+        }
+      },
+      "label" : null,
+      "id" : 1,
+      "tool_state" : "{\"__page__\": null, \"output_format\": \"\\\"txt\\\"\", \"fastq_or_bam\": \"{\\\"__current_case__\\\": 1, \\\"fastq_collection\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"input_select\\\": \\\"paired_collection_fastq\\\"}\", \"platform\": \"\\\"illumina\\\"\", \"__rerun_remap_job_id__\": null, \"advanced\": \"{\\\"__current_case__\\\": 1, \\\"mapper\\\": \\\"bwa\\\", \\\"min_allele_freq\\\": \\\"0.1\\\", \\\"min_allele_freq_reporting\\\": \\\"0.1\\\", \\\"min_depth\\\": \\\"10\\\", \\\"options\\\": \\\"yes\\\"}\"}",
+      "errors" : null,
+      "position" : {
+        "top" : 248.5,
+        "left" : 478.5
+      },
+      "name" : "TB-Profiler Profile",
+      "uuid" : "c0f95e55-493c-431e-940f-c01124adc83d",
+      "outputs" : [ {
+        "type" : "json",
+        "name" : "results_json"
+      }, {
+        "type" : "vcf",
+        "name" : "output_vcf"
+      }, {
+        "type" : "bam",
+        "name" : "output_bam"
+      }, {
+        "type" : "txt",
+        "name" : "output_txt"
+      } ],
+      "tool_shed_repository" : {
+        "owner" : "iuc",
+        "changeset_revision" : "200c378d85f3",
+        "name" : "tbprofiler",
+        "tool_shed" : "toolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "2.8.4+galaxy1",
+      "annotation" : "",
+      "inputs" : [ {
+        "name" : "fastq_or_bam",
+        "description" : "runtime parameter for tool TB-Profiler Profile"
+      } ],
+      "post_job_actions" : {
+        "DeleteIntermediatesActionresults_json" : {
+          "output_name" : "results_json",
+          "action_type" : "DeleteIntermediatesAction",
+          "action_arguments" : { }
+        },
+        "RenameDatasetActionoutput_vcf" : {
+          "output_name" : "output_vcf",
+          "action_type" : "RenameDatasetAction",
+          "action_arguments" : {
+            "newname" : "tbprofiler_variants.vcf"
+          }
+        },
+        "RenameDatasetActionoutput_txt" : {
+          "output_name" : "output_txt",
+          "action_type" : "RenameDatasetAction",
+          "action_arguments" : {
+            "newname" : "tbprofiler_report.txt"
+          }
+        },
+        "RenameDatasetActionresults_json" : {
+          "output_name" : "results_json",
+          "action_type" : "RenameDatasetAction",
+          "action_arguments" : {
+            "newname" : "tbprofiler_results.json"
+          }
+        },
+        "RenameDatasetActionoutput_bam" : {
+          "output_name" : "output_bam",
+          "action_type" : "RenameDatasetAction",
+          "action_arguments" : {
+            "newname" : "tbprofiler_alignment.bam"
+          }
+        }
+      },
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/iuc/tbprofiler/tb_profiler_profile/2.8.4+galaxy1",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/iuc/tbprofiler/tb_profiler_profile/2.8.4+galaxy1"
+    }
+  },
+  "annotation" : "",
+  "a_galaxy_workflow" : "true"
+}

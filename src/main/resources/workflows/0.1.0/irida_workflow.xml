@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iridaWorkflow>
+  <id>bcce9560-4c14-47c3-82df-3cec1c01e881</id>
+  <name>tbprofiler</name>
+  <version>0.1.0</version>
+  <analysisType>TBPROFILER</analysisType>
+  <inputs>
+    <sequenceReadsPaired>sequence_reads_paired</sequenceReadsPaired>
+    <requiresSingleSample>true</requiresSingleSample>
+  </inputs>
+  <parameters>
+    <parameter name="tbprofiler-1-advanced.min_allele_freq" defaultValue="0.1">
+      <toolParameter toolId="toolshed.g2.bx.psu.edu/repos/iuc/tbprofiler/tb_profiler_profile/2.8.4+galaxy1" parameterName="advanced.min_allele_freq"/>
+    </parameter>
+    <parameter name="tbprofiler-1-advanced.min_allele_freq_reporting" defaultValue="0.1">
+      <toolParameter toolId="toolshed.g2.bx.psu.edu/repos/iuc/tbprofiler/tb_profiler_profile/2.8.4+galaxy1" parameterName="advanced.min_allele_freq_reporting"/>
+    </parameter>
+    <parameter name="tbprofiler-1-advanced.min_depth" defaultValue="10">
+      <toolParameter toolId="toolshed.g2.bx.psu.edu/repos/iuc/tbprofiler/tb_profiler_profile/2.8.4+galaxy1" parameterName="advanced.min_depth"/>
+    </parameter>
+  </parameters>
+  <outputs>
+    <output name="tbprofiler_report" fileName="tbprofiler_report.txt"/>
+    <output name="tbprofiler_results" fileName="tbprofiler_results.json"/>
+    <output name="tbprofiler_variants" fileName="tbprofiler_variants.vcf"/>
+    <output name="tbprofiler_alignment" fileName="tbprofiler_alignment.bam"/>
+  </outputs>
+  <toolRepositories>
+    <repository>
+      <name>tbprofiler</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>200c378d85f3</revision>
+    </repository>
+  </toolRepositories>
+</iridaWorkflow>
