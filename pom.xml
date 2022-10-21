@@ -23,7 +23,7 @@
 		<irida.version.compiletime>19.01.3</irida.version.compiletime>
 
 		<!-- Plugin Dependency Versions -->
-		<jackson.version>2.9.10</jackson.version>
+		<jackson.version>2.13.4.1</jackson.version>
 
 		<!-- Dependency Versions -->
 		<pf4j.version>2.4.0</pf4j.version>
