@@ -20,14 +20,14 @@
             "name": "Input dataset collection",
             "outputs": [],
             "position": {
-                "bottom": 257.1999969482422,
+                "bottom": 298.6999969482422,
                 "height": 82.19999694824219,
-                "left": 149,
-                "right": 349,
-                "top": 175,
+                "left": 332,
+                "right": 532,
+                "top": 216.5,
                 "width": 200,
-                "x": 149,
-                "y": 175
+                "x": 332,
+                "y": 216.5
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"collection_type\": \"list:paired\"}",
@@ -38,7 +38,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "f5d5b4a1-0210-4404-b04f-2f53fbb890b9"
+                    "uuid": "4dc1c660-6f16-4dfc-a9f4-6a372565feb6"
                 }
             ]
         },
@@ -48,7 +48,7 @@
             "errors": null,
             "id": 1,
             "input_connections": {
-                "single_paired|in1": {
+                "single_paired|paired_input": {
                     "id": 0,
                     "output_name": "output"
                 }
@@ -63,7 +63,7 @@
             "name": "fastp",
             "outputs": [
                 {
-                    "name": "out1",
+                    "name": "output_paired_coll",
                     "type": "input"
                 },
                 {
@@ -76,16 +76,21 @@
                 }
             ],
             "position": {
-                "bottom": 505.1999969482422,
+                "bottom": 430.6999969482422,
                 "height": 215.1999969482422,
-                "left": 399,
-                "right": 599,
-                "top": 290,
+                "left": 577,
+                "right": 777,
+                "top": 215.5,
                 "width": 200,
-                "x": 399,
-                "y": 290
+                "x": 577,
+                "y": 215.5
             },
             "post_job_actions": {
+                "HideDatasetActionoutput_paired_coll": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "output_paired_coll"
+                },
                 "RenameDatasetActionreport_json": {
                     "action_arguments": {
                         "newname": "fastp.json"
@@ -101,37 +106,90 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"filter_options\": {\"quality_filtering_options\": {\"disable_quality_filtering\": \"false\", \"qualified_quality_phred\": \"\", \"unqualified_percent_limit\": \"\", \"n_base_limit\": \"\"}, \"length_filtering_options\": {\"disable_length_filtering\": \"false\", \"length_required\": \"\", \"length_limit\": \"\"}, \"low_complexity_filter\": {\"enable_low_complexity_filter\": \"false\", \"complexity_threshold\": \"\"}}, \"output_options\": {\"report_html\": \"true\", \"report_json\": \"true\"}, \"overrepresented_sequence_analysis\": {\"overrepresentation_analysis\": \"false\", \"overrepresentation_sampling\": \"\"}, \"read_mod_options\": {\"polyg_tail_trimming\": {\"trimming_select\": \"\", \"__current_case__\": 1, \"poly_g_min_len\": \"\"}, \"polyx_tail_trimming\": {\"polyx_trimming_select\": \"\", \"__current_case__\": 1}, \"umi_processing\": {\"umi\": \"false\", \"umi_loc\": \"\", \"umi_len\": \"\", \"umi_prefix\": \"\"}, \"cutting_by_quality_options\": {\"cut_by_quality5\": \"false\", \"cut_by_quality3\": \"true\", \"cut_window_size\": \"\", \"cut_mean_quality\": \"\"}, \"base_correction_options\": {\"correction\": \"false\"}}, \"single_paired\": {\"single_paired_selector\": \"single\", \"__current_case__\": 0, \"in1\": {\"__class__\": \"RuntimeValue\"}, \"adapter_trimming_options\": {\"disable_adapter_trimming\": \"false\", \"adapter_sequence1\": \"\"}, \"global_trimming_options\": {\"trim_front1\": \"\", \"trim_tail1\": \"\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"filter_options\": {\"quality_filtering_options\": {\"disable_quality_filtering\": \"false\", \"qualified_quality_phred\": \"\", \"unqualified_percent_limit\": \"\", \"n_base_limit\": \"\"}, \"length_filtering_options\": {\"disable_length_filtering\": \"false\", \"length_required\": \"\", \"length_limit\": \"\"}, \"low_complexity_filter\": {\"enable_low_complexity_filter\": \"false\", \"complexity_threshold\": \"\"}}, \"output_options\": {\"report_html\": \"true\", \"report_json\": \"true\"}, \"overrepresented_sequence_analysis\": {\"overrepresentation_analysis\": \"false\", \"overrepresentation_sampling\": \"\"}, \"read_mod_options\": {\"polyg_tail_trimming\": {\"trimming_select\": \"\", \"__current_case__\": 1, \"poly_g_min_len\": \"\"}, \"polyx_tail_trimming\": {\"polyx_trimming_select\": \"\", \"__current_case__\": 1}, \"umi_processing\": {\"umi\": \"false\", \"umi_loc\": \"\", \"umi_len\": \"\", \"umi_prefix\": \"\"}, \"cutting_by_quality_options\": {\"cut_by_quality5\": \"false\", \"cut_by_quality3\": \"true\", \"cut_window_size\": \"\", \"cut_mean_quality\": \"\"}, \"base_correction_options\": {\"correction\": \"false\"}}, \"single_paired\": {\"single_paired_selector\": \"paired_collection\", \"__current_case__\": 2, \"paired_input\": {\"__class__\": \"RuntimeValue\"}, \"adapter_trimming_options\": {\"disable_adapter_trimming\": \"false\", \"adapter_sequence1\": \"\", \"adapter_sequence2\": \"\"}, \"global_trimming_options\": {\"trim_front1\": \"\", \"trim_tail1\": \"\", \"trim_front2\": \"\", \"trim_tail2\": \"\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.23.2+galaxy0",
             "type": "tool",
-            "uuid": "39a82043-37d9-4518-99ce-830f67c0ee21",
+            "uuid": "a6aa9263-8cdd-4202-9ff3-a44b4c0b9a97",
             "workflow_outputs": [
-                {
-                    "label": "fastp on input dataset(s): Read 1 output",
-                    "output_name": "out1",
-                    "uuid": "ac84ba0c-0d8c-46a2-9607-5e6489c0402b"
-                },
                 {
                     "label": "fastp on input dataset(s): HTML report",
                     "output_name": "report_html",
-                    "uuid": "4f7e062e-76b5-452d-96b6-80ee86f7e8dd"
+                    "uuid": "b41d80c5-92c9-414e-b9c0-7918e8bb79a3"
                 },
                 {
                     "label": null,
                     "output_name": "report_json",
-                    "uuid": "2898071c-3cd1-4bd6-b9b0-df7786112995"
+                    "uuid": "fcd4c4d1-43db-4826-b3e5-925b14e3551f"
                 }
             ]
         },
         "2": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/tbprofiler/tb_profiler_profile/4.1.1+galaxy0",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/public-health-bioinformatics/fastp_json_to_tabular/fastp_json_to_tabular/0.1.0",
             "errors": null,
             "id": 2,
             "input_connections": {
+                "report": {
+                    "id": 1,
+                    "output_name": "report_json"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Convert fastp json report to tabular",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "tabular"
+                }
+            ],
+            "position": {
+                "bottom": 331.1000061035156,
+                "height": 113.60000610351562,
+                "left": 837,
+                "right": 1037,
+                "top": 217.5,
+                "width": 200,
+                "x": 837,
+                "y": 217.5
+            },
+            "post_job_actions": {
+                "RenameDatasetActionoutput": {
+                    "action_arguments": {
+                        "newname": "fastp.tsv"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/public-health-bioinformatics/fastp_json_to_tabular/fastp_json_to_tabular/0.1.0",
+            "tool_shed_repository": {
+                "changeset_revision": "091a2fb2e7ad",
+                "name": "fastp_json_to_tabular",
+                "owner": "public-health-bioinformatics",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"report\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "916373c5-6364-4a85-a863-5de55c837b0d",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "1e7dbf72-3776-41fd-bbdd-ada783d23e37"
+                }
+            ]
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/tbprofiler/tb_profiler_profile/4.1.1+galaxy0",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
                 "fastq_or_bam|fastq_collection": {
                     "id": 1,
-                    "output_name": "out1"
+                    "output_name": "output_paired_coll"
                 }
             },
             "inputs": [],
@@ -156,14 +214,14 @@
                 }
             ],
             "position": {
-                "bottom": 474.3999938964844,
+                "bottom": 654.8999938964844,
                 "height": 286.3999938964844,
-                "left": 752.5,
-                "right": 952.5,
-                "top": 188,
+                "left": 835.5,
+                "right": 1035.5,
+                "top": 368.5,
                 "width": 200,
-                "x": 752.5,
-                "y": 188
+                "x": 835.5,
+                "y": 368.5
             },
             "post_job_actions": {
                 "DeleteIntermediatesActionresults_json": {
@@ -215,90 +273,27 @@
                 {
                     "label": null,
                     "output_name": "output_txt",
-                    "uuid": "0efd98c4-2faf-4705-b428-d061eef962a0"
+                    "uuid": "724554a0-dd95-4292-806f-a03908c4377b"
                 },
                 {
                     "label": null,
                     "output_name": "results_json",
-                    "uuid": "c970d52b-1b06-41a5-a728-d18f8e2fd9ff"
+                    "uuid": "4ac03ff2-9c15-4eaa-b523-15a32fc69798"
                 },
                 {
                     "label": null,
                     "output_name": "output_vcf",
-                    "uuid": "4cb2cb67-1e06-4f82-9d1d-e71907a3a78e"
+                    "uuid": "94e5ecdf-04ea-4f15-acbe-c561b79233c1"
                 },
                 {
                     "label": null,
                     "output_name": "output_bam",
-                    "uuid": "47a74857-9fb9-4479-b806-4b308dcee6c2"
-                }
-            ]
-        },
-        "3": {
-            "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/public-health-bioinformatics/fastp_json_to_tabular/fastp_json_to_tabular/0.1.0",
-            "errors": null,
-            "id": 3,
-            "input_connections": {
-                "report": {
-                    "id": 1,
-                    "output_name": "report_json"
-                }
-            },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Convert fastp json report to tabular",
-                    "name": "report"
-                }
-            ],
-            "label": null,
-            "name": "Convert fastp json report to tabular",
-            "outputs": [
-                {
-                    "name": "output",
-                    "type": "tabular"
-                }
-            ],
-            "position": {
-                "bottom": 658.6000061035156,
-                "height": 113.60000610351562,
-                "left": 654,
-                "right": 854,
-                "top": 545,
-                "width": 200,
-                "x": 654,
-                "y": 545
-            },
-            "post_job_actions": {
-                "RenameDatasetActionoutput": {
-                    "action_arguments": {
-                        "newname": "fastp.tsv"
-                    },
-                    "action_type": "RenameDatasetAction",
-                    "output_name": "output"
-                }
-            },
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/public-health-bioinformatics/fastp_json_to_tabular/fastp_json_to_tabular/0.1.0",
-            "tool_shed_repository": {
-                "changeset_revision": "091a2fb2e7ad",
-                "name": "fastp_json_to_tabular",
-                "owner": "public-health-bioinformatics",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"report\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "0.1.0",
-            "type": "tool",
-            "uuid": "916373c5-6364-4a85-a863-5de55c837b0d",
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "d14e4a65-a565-4bb7-b798-9ea54be6a14a"
+                    "uuid": "865ae7b1-a6b3-4898-bcc1-74b5a92b1e7b"
                 }
             ]
         }
     },
     "tags": [],
-    "uuid": "31b59ea0-8ffe-4ada-8c6c-516a5a2a58dc",
+    "uuid": "1c748a91-948c-4730-be5a-dbe000180b96",
     "version": 1
 }
