@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iridaWorkflow>
+  <id>dc25a721-ce39-414c-a26c-7b6d77611340</id>
+  <name>tbprofiler</name>
+  <version>0.2.0</version>
+  <analysisType>TBPROFILER</analysisType>
+  <inputs>
+    <sequenceReadsPaired>sequence_reads_paired</sequenceReadsPaired>
+    <requiresSingleSample>true</requiresSingleSample>
+  </inputs>
+  <parameters>
+    <parameter name="tbprofiler-1-advanced.min_allele_freq" defaultValue="0.1">
+      <toolParameter toolId="toolshed.g2.bx.psu.edu/repos/iuc/tbprofiler/tb_profiler_profile/4.1.1+galaxy0" parameterName="advanced.min_allele_freq"/>
+    </parameter>
+    <parameter name="tbprofiler-1-advanced.min_allele_freq_reporting" defaultValue="0.1">
+      <toolParameter toolId="toolshed.g2.bx.psu.edu/repos/iuc/tbprofiler/tb_profiler_profile/4.1.1+galaxy0" parameterName="advanced.min_allele_freq_reporting"/>
+    </parameter>
+    <parameter name="tbprofiler-1-advanced.min_depth" defaultValue="10">
+      <toolParameter toolId="toolshed.g2.bx.psu.edu/repos/iuc/tbprofiler/tb_profiler_profile/4.1.1+galaxy0" parameterName="advanced.min_depth"/>
+    </parameter>
+  </parameters>
+  <outputs>
+    <output name="fastp_json" fileName="fastp.json"/>
+    <output name="fastp_tabular" fileName="fastp.tsv"/>
+    <output name="tbprofiler_report" fileName="tbprofiler_report.txt"/>
+    <output name="tbprofiler_results" fileName="tbprofiler_results.json"/>
+    <output name="tbprofiler_variants" fileName="tbprofiler_variants.vcf"/>
+    <output name="tbprofiler_alignment" fileName="tbprofiler_alignment.bam"/>
+  </outputs>
+  <toolRepositories>
+    <repository>
+      <name>fastp</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>65b93b623c77</revision>
+    </repository>
+    <repository>
+      <name>fastp_json_to_tabular</name>
+      <owner>public_health_bioinformatics</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>091a2fb2e7ad</revision>
+    </repository>
+    <repository>
+      <name>tbprofiler</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>200c378d85f3</revision>
+    </repository>
+  </toolRepositories>
+</iridaWorkflow>

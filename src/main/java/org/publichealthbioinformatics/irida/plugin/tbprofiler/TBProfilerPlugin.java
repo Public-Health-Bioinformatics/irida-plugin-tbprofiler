@@ -1,21 +1,20 @@
 package org.publichealthbioinformatics.irida.plugin.tbprofiler;
 
-import java.awt.Color;
-import java.util.Optional;
-import java.util.UUID;
-
+import ca.corefacility.bioinformatics.irida.model.sample.Sample;
+import ca.corefacility.bioinformatics.irida.model.workflow.analysis.type.AnalysisType;
+import ca.corefacility.bioinformatics.irida.pipeline.results.updater.AnalysisSampleUpdater;
+import ca.corefacility.bioinformatics.irida.plugins.IridaPlugin;
+import ca.corefacility.bioinformatics.irida.plugins.IridaPluginException;
+import ca.corefacility.bioinformatics.irida.service.sample.MetadataTemplateService;
+import ca.corefacility.bioinformatics.irida.service.sample.SampleService;
+import ca.corefacility.bioinformatics.irida.service.workflow.IridaWorkflowsService;
 import org.pf4j.Extension;
 import org.pf4j.Plugin;
 import org.pf4j.PluginWrapper;
 
-import ca.corefacility.bioinformatics.irida.model.sample.Sample;
-import ca.corefacility.bioinformatics.irida.plugins.IridaPlugin;
-import ca.corefacility.bioinformatics.irida.plugins.IridaPluginException;
-import ca.corefacility.bioinformatics.irida.model.workflow.analysis.type.AnalysisType;
-import ca.corefacility.bioinformatics.irida.pipeline.results.updater.AnalysisSampleUpdater;
-import ca.corefacility.bioinformatics.irida.service.sample.MetadataTemplateService;
-import ca.corefacility.bioinformatics.irida.service.sample.SampleService;
-import ca.corefacility.bioinformatics.irida.service.workflow.IridaWorkflowsService;
+import java.awt.*;
+import java.util.Optional;
+import java.util.UUID;
 
 /**
  * An example {@link IridaPlugin} implementation which will extract some
@@ -70,14 +69,14 @@ public class TBProfilerPlugin extends Plugin {
 		 * <strong>id</strong> entry in the <strong>irida_workflow.xml</strong> file.
 		 * 
 		 * <pre>
-		 * {@code <id>bcce9560-4c14-47c3-82df-3cec1c01e881</id>}
+		 * {@code <id>dc25a721-ce39-414c-a26c-7b6d77611340</id>}
 		 * </pre>
 		 * 
 		 * @return A {@link UUID} defining the id of this pipeline.
 		 */
 		@Override
 		public UUID getDefaultWorkflowUUID() {
-			return UUID.fromString("bcce9560-4c14-47c3-82df-3cec1c01e881");
+			return UUID.fromString("dc25a721-ce39-414c-a26c-7b6d77611340");
 		}
 
 		/*******************************************************************************
