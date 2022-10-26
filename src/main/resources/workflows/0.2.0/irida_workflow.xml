@@ -26,6 +26,12 @@
     <output name="tbprofiler_results" fileName="tbprofiler_results.json"/>
     <output name="tbprofiler_variants" fileName="tbprofiler_variants.vcf"/>
     <output name="tbprofiler_alignment" fileName="tbprofiler_alignment.bam"/>
+    <output name="tbprofiler_qc" fileName="tbprofiler_qc.tsv"/>
+    <output name="tbprofiler_gene_coverage" fileName="tbprofiler_gene_coverage.tsv"/>
+    <output name="tbprofiler_resistance_variants" fileName="tbprofiler_resistance_variants.tsv"/>
+    <output name="tbprofiler_other_variants" fileName="tbprofiler_other_variants.tsv"/>
+    <output name="tbprofiler_missing_positions" fileName="tbprofiler_missing_positions.tsv"/>
+    <output name="tbprofiler_analysis_metadata" fileName="tbprofiler_analysis_metadata.tsv"/>
   </outputs>
   <toolRepositories>
     <repository>
@@ -45,6 +51,12 @@
       <owner>iuc</owner>
       <url>https://toolshed.g2.bx.psu.edu</url>
       <revision>200c378d85f3</revision>
+    </repository>
+    <repository>
+      <name>tbprofiler_json_to_tabular</name>
+      <owner>dfornika</owner>
+      <url>https://testtoolshed.g2.bx.psu.edu</url>
+      <revision>90d6f1633abc</revision>
     </repository>
   </toolRepositories>
 </iridaWorkflow>
