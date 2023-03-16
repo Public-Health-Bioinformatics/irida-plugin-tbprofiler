@@ -1,0 +1,437 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "format-version": "0.1",
+    "name": "TBProfiler",
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "sequence_reads_paired"
+                }
+            ],
+            "label": "sequence_reads_paired",
+            "name": "Input dataset collection",
+            "outputs": [],
+            "position": {
+                "bottom": 329.1999969482422,
+                "height": 82.19999694824219,
+                "left": 213,
+                "right": 413,
+                "top": 247,
+                "width": 200,
+                "x": 213,
+                "y": 247
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false, \"collection_type\": \"list:paired\"}",
+            "tool_version": null,
+            "type": "data_collection_input",
+            "uuid": "def663ea-19ae-48ab-9212-e1f220322236",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "a5eb2d9d-13de-4f99-9cb3-def01b5616ff"
+                }
+            ]
+        },
+        "1": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.23.2+galaxy0",
+            "errors": null,
+            "id": 1,
+            "input_connections": {
+                "single_paired|paired_input": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "fastp",
+            "outputs": [
+                {
+                    "name": "output_paired_coll",
+                    "type": "input"
+                },
+                {
+                    "name": "report_html",
+                    "type": "html"
+                },
+                {
+                    "name": "report_json",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "bottom": 461.1999969482422,
+                "height": 215.1999969482422,
+                "left": 458,
+                "right": 658,
+                "top": 246,
+                "width": 200,
+                "x": 458,
+                "y": 246
+            },
+            "post_job_actions": {
+                "HideDatasetActionoutput_paired_coll": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "output_paired_coll"
+                },
+                "RenameDatasetActionreport_json": {
+                    "action_arguments": {
+                        "newname": "fastp.json"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "report_json"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.23.2+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "65b93b623c77",
+                "name": "fastp",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"filter_options\": {\"quality_filtering_options\": {\"disable_quality_filtering\": \"false\", \"qualified_quality_phred\": \"\", \"unqualified_percent_limit\": \"\", \"n_base_limit\": \"\"}, \"length_filtering_options\": {\"disable_length_filtering\": \"false\", \"length_required\": \"\", \"length_limit\": \"\"}, \"low_complexity_filter\": {\"enable_low_complexity_filter\": \"false\", \"complexity_threshold\": \"\"}}, \"output_options\": {\"report_html\": \"true\", \"report_json\": \"true\"}, \"overrepresented_sequence_analysis\": {\"overrepresentation_analysis\": \"false\", \"overrepresentation_sampling\": \"\"}, \"read_mod_options\": {\"polyg_tail_trimming\": {\"trimming_select\": \"\", \"__current_case__\": 1, \"poly_g_min_len\": \"\"}, \"polyx_tail_trimming\": {\"polyx_trimming_select\": \"\", \"__current_case__\": 1}, \"umi_processing\": {\"umi\": \"false\", \"umi_loc\": \"\", \"umi_len\": \"\", \"umi_prefix\": \"\"}, \"cutting_by_quality_options\": {\"cut_by_quality5\": \"false\", \"cut_by_quality3\": \"true\", \"cut_window_size\": \"\", \"cut_mean_quality\": \"\"}, \"base_correction_options\": {\"correction\": \"false\"}}, \"single_paired\": {\"single_paired_selector\": \"paired_collection\", \"__current_case__\": 2, \"paired_input\": {\"__class__\": \"ConnectedValue\"}, \"adapter_trimming_options\": {\"disable_adapter_trimming\": \"false\", \"adapter_sequence1\": \"\", \"adapter_sequence2\": \"\"}, \"global_trimming_options\": {\"trim_front1\": \"\", \"trim_tail1\": \"\", \"trim_front2\": \"\", \"trim_tail2\": \"\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.23.2+galaxy0",
+            "type": "tool",
+            "uuid": "a6aa9263-8cdd-4202-9ff3-a44b4c0b9a97",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "report_json",
+                    "uuid": "d125351c-f29e-400d-a17f-7f59449508e7"
+                },
+                {
+                    "label": "fastp on input dataset(s): HTML report",
+                    "output_name": "report_html",
+                    "uuid": "db74a6f0-530b-4cbe-ae68-afcdc4783b56"
+                }
+            ]
+        },
+        "2": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/tbprofiler/tb_profiler_profile/4.1.1+galaxy0",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "fastq_or_bam|fastq_collection": {
+                    "id": 1,
+                    "output_name": "output_paired_coll"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "TB-Profiler Profile",
+            "outputs": [
+                {
+                    "name": "results_json",
+                    "type": "json"
+                },
+                {
+                    "name": "output_vcf",
+                    "type": "vcf"
+                },
+                {
+                    "name": "output_bam",
+                    "type": "bam"
+                },
+                {
+                    "name": "output_txt",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "bottom": 522.3999938964844,
+                "height": 286.3999938964844,
+                "left": 714.5,
+                "right": 914.5,
+                "top": 236,
+                "width": 200,
+                "x": 714.5,
+                "y": 236
+            },
+            "post_job_actions": {
+                "DeleteIntermediatesActionresults_json": {
+                    "action_arguments": {},
+                    "action_type": "DeleteIntermediatesAction",
+                    "output_name": "results_json"
+                },
+                "RenameDatasetActionoutput_bam": {
+                    "action_arguments": {
+                        "newname": "tbprofiler_alignment.bam"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output_bam"
+                },
+                "RenameDatasetActionoutput_txt": {
+                    "action_arguments": {
+                        "newname": "tbprofiler_report.txt"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output_txt"
+                },
+                "RenameDatasetActionoutput_vcf": {
+                    "action_arguments": {
+                        "newname": "tbprofiler_variants.vcf"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output_vcf"
+                },
+                "RenameDatasetActionresults_json": {
+                    "action_arguments": {
+                        "newname": "tbprofiler_results.json"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "results_json"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/tbprofiler/tb_profiler_profile/4.1.1+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "ac8250086ac3",
+                "name": "tbprofiler",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"advanced\": {\"options\": \"yes\", \"__current_case__\": 1, \"mapper\": \"bwa\", \"caller\": \"freebayes\", \"min_depth\": \"10\", \"min_allele_freq\": \"0.1\", \"min_allele_freq_reporting\": \"0.1\"}, \"fastq_or_bam\": {\"input_select\": \"paired_collection_fastq\", \"__current_case__\": 1, \"fastq_collection\": {\"__class__\": \"ConnectedValue\"}}, \"output_format\": \"txt\", \"platform\": \"illumina\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "4.1.1+galaxy0",
+            "type": "tool",
+            "uuid": "ea99961a-33a8-488c-b97c-ed2b2a7d37cc",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "results_json",
+                    "uuid": "0e223d10-f584-4797-98f4-ad166e1ca9ff"
+                },
+                {
+                    "label": null,
+                    "output_name": "output_txt",
+                    "uuid": "ef9889f4-6f0b-4755-941b-865f9ba199de"
+                },
+                {
+                    "label": null,
+                    "output_name": "output_bam",
+                    "uuid": "33795a97-bcda-472f-af83-7bdc04f4cd75"
+                },
+                {
+                    "label": null,
+                    "output_name": "output_vcf",
+                    "uuid": "a3b2f956-b9f6-4304-9d64-c1838c86d6d4"
+                }
+            ]
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/public-health-bioinformatics/fastp_json_to_tabular/fastp_json_to_tabular/0.1.0",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "report": {
+                    "id": 1,
+                    "output_name": "report_json"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Convert fastp json report to tabular",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "tabular"
+                }
+            ],
+            "position": {
+                "bottom": 681.6000061035156,
+                "height": 113.60000610351562,
+                "left": 723,
+                "right": 923,
+                "top": 568,
+                "width": 200,
+                "x": 723,
+                "y": 568
+            },
+            "post_job_actions": {
+                "RenameDatasetActionoutput": {
+                    "action_arguments": {
+                        "newname": "fastp.tsv"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/public-health-bioinformatics/fastp_json_to_tabular/fastp_json_to_tabular/0.1.0",
+            "tool_shed_repository": {
+                "changeset_revision": "091a2fb2e7ad",
+                "name": "fastp_json_to_tabular",
+                "owner": "public-health-bioinformatics",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"report\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "916373c5-6364-4a85-a863-5de55c837b0d",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "acec816b-4d7d-4b75-9871-a48cfe9b0a02"
+                }
+            ]
+        },
+        "4": {
+            "annotation": "",
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/dfornika/tbprofiler_json_to_tabular/tbprofiler_json_to_tabular/0.1.0+galaxy2",
+            "errors": null,
+            "id": 4,
+            "input_connections": {
+                "report": {
+                    "id": 2,
+                    "output_name": "results_json"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Convert tbprofiler json report to tabular",
+                    "name": "report"
+                }
+            ],
+            "label": null,
+            "name": "Convert tbprofiler json report to tabular",
+            "outputs": [
+                {
+                    "name": "qc",
+                    "type": "tabular"
+                },
+                {
+                    "name": "gene_coverage",
+                    "type": "tabular"
+                },
+                {
+                    "name": "missing_positions",
+                    "type": "tabular"
+                },
+                {
+                    "name": "resistance_variants",
+                    "type": "tabular"
+                },
+                {
+                    "name": "other_variants",
+                    "type": "tabular"
+                },
+                {
+                    "name": "analysis_metadata",
+                    "type": "tabular"
+                }
+            ],
+            "position": {
+                "bottom": 610.7000122070312,
+                "height": 347.20001220703125,
+                "left": 1003,
+                "right": 1203,
+                "top": 263.5,
+                "width": 200,
+                "x": 1003,
+                "y": 263.5
+            },
+            "post_job_actions": {
+                "RenameDatasetActionanalysis_metadata": {
+                    "action_arguments": {
+                        "newname": "tbprofiler_analysis_metadata.tsv"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "analysis_metadata"
+                },
+                "RenameDatasetActiongene_coverage": {
+                    "action_arguments": {
+                        "newname": "tbprofiler_gene_coverage.tsv"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "gene_coverage"
+                },
+                "RenameDatasetActionmissing_positions": {
+                    "action_arguments": {
+                        "newname": "tbprofiler_missing_positions.tsv"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "missing_positions"
+                },
+                "RenameDatasetActionother_variants": {
+                    "action_arguments": {
+                        "newname": "tbprofiler_other_variants.tsv"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "other_variants"
+                },
+                "RenameDatasetActionqc": {
+                    "action_arguments": {
+                        "newname": "tbprofiler_qc.tsv"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "qc"
+                },
+                "RenameDatasetActionresistance_variants": {
+                    "action_arguments": {
+                        "newname": "tbprofiler_resistance_variants.tsv"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "resistance_variants"
+                }
+            },
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/dfornika/tbprofiler_json_to_tabular/tbprofiler_json_to_tabular/0.1.0+galaxy2",
+            "tool_shed_repository": {
+                "changeset_revision": "90d6f1633abc",
+                "name": "tbprofiler_json_to_tabular",
+                "owner": "dfornika",
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"report\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0+galaxy2",
+            "type": "tool",
+            "uuid": "2f2ca8f5-f96e-4649-a1ad-538ca56ca0c5",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "qc",
+                    "uuid": "aca07f19-4082-4325-8303-4917ddd7e178"
+                },
+                {
+                    "label": null,
+                    "output_name": "gene_coverage",
+                    "uuid": "0dfa4648-327e-4514-bbb4-ab4f275726d3"
+                },
+                {
+                    "label": null,
+                    "output_name": "missing_positions",
+                    "uuid": "913213b4-d194-4e84-95f0-f64121a74173"
+                },
+                {
+                    "label": null,
+                    "output_name": "resistance_variants",
+                    "uuid": "118b2ef2-cc6f-442c-931a-55aabda3c0e9"
+                },
+                {
+                    "label": null,
+                    "output_name": "other_variants",
+                    "uuid": "c9f9443d-ae46-49fb-ad77-80f54be3523b"
+                },
+                {
+                    "label": null,
+                    "output_name": "analysis_metadata",
+                    "uuid": "617c1559-a03d-4f54-8717-24bfddf93218"
+                }
+            ]
+        }
+    },
+    "tags": [],
+    "uuid": "8d352ea3-11cd-431a-9231-5e5fb07bb584",
+    "version": 1
+}

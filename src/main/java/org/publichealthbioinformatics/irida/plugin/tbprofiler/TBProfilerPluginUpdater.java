@@ -1,17 +1,7 @@
 package org.publichealthbioinformatics.irida.plugin.tbprofiler;
 
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.*;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableMap;
-
 import ca.corefacility.bioinformatics.irida.exceptions.IridaWorkflowNotFoundException;
 import ca.corefacility.bioinformatics.irida.exceptions.PostProcessingException;
-import ca.corefacility.bioinformatics.irida.model.sample.MetadataTemplateField;
 import ca.corefacility.bioinformatics.irida.model.sample.Sample;
 import ca.corefacility.bioinformatics.irida.model.sample.metadata.MetadataEntry;
 import ca.corefacility.bioinformatics.irida.model.sample.metadata.PipelineProvidedMetadataEntry;
@@ -23,6 +13,13 @@ import ca.corefacility.bioinformatics.irida.pipeline.results.updater.AnalysisSam
 import ca.corefacility.bioinformatics.irida.service.sample.MetadataTemplateService;
 import ca.corefacility.bioinformatics.irida.service.sample.SampleService;
 import ca.corefacility.bioinformatics.irida.service.workflow.IridaWorkflowsService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.annotations.VisibleForTesting;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.*;
 
 /**
  * This implements a class used to perform post-processing on the analysis
@@ -67,7 +64,7 @@ public class TBProfilerPluginUpdater implements AnalysisSampleUpdater {
 		} else if (analysis == null) {
 			throw new IllegalArgumentException("analysis is null");
 		} else if (samples.size() != 1) {
-			// In this particular pipeline, only one sample should be run at a time so I
+			// In this particular pipeline, only one sample should be run at a time, so I
 			// verify that the collection of samples I get has only 1 sample
 			throw new IllegalArgumentException(
 					"samples size=" + samples.size() + " is not 1 for analysisSubmission=" + analysis.getId());
@@ -116,13 +113,12 @@ public class TBProfilerPluginUpdater implements AnalysisSampleUpdater {
 			key = workflowName + "/sub_lineage";
 			metadataEntries.put(key, tbProfilerSubLineageEntry);
 
-			Map<MetadataTemplateField, MetadataEntry> metadataMap = metadataTemplateService.getMetadataMap(metadataEntries);
+			//convert the string/entry Map to a Set of MetadataEntry
+			Set<MetadataEntry> metadataSet = metadataTemplateService.convertMetadataStringsToSet(metadataEntries);
 
-			// merges with existing sample metadata
-			sample.mergeMetadata(metadataMap);
+			// merges with existing sample metadata and does an update of the sample metadata.
+			sampleService.mergeSampleMetadata(sample,metadataSet);
 
-			// does an update of the sample metadata
-			sampleService.updateFields(sample.getId(), ImmutableMap.of("metadata", sample.getMetadata()));
 		} catch (IOException e) {
 			throw new PostProcessingException("Error parsing gene detection status file", e);
 		} catch (IridaWorkflowNotFoundException e) {
