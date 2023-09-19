@@ -67,13 +67,13 @@ public class TBProfilerPluginUpdaterTest {
     @Test
     public void testUpdate() throws Throwable {
         ImmutableMap<String, String> expectedResults = ImmutableMap.<String, String>builder()
-                .put("tbprofiler/percent_reads_mapped", "99.08")
-                .put("tbprofiler/resistance_type", "MDR")
-                .put("tbprofiler/main_lineage", "4")
-                .put("tbprofiler/sub_lineage", "4.1.2")
+                .put("tbprofiler/percent_reads_mapped", "99.38")
+                .put("tbprofiler/resistance_type", "Pre-XDR-TB")
+                .put("tbprofiler/main_lineage", "2")
+                .put("tbprofiler/sub_lineage", "2.2.1")
                 .build();
 
-        Path tbProfilerResultsFilePath = Paths.get(ClassLoader.getSystemResource("SRR10686529_tbprofiler_results.json").toURI());
+        Path tbProfilerResultsFilePath = Paths.get(ClassLoader.getSystemResource("SRR13870426_tbprofiler_results.json").toURI());
 
         AnalysisOutputFile tbProfilerResultsFile = new AnalysisOutputFile(tbProfilerResultsFilePath, null, null, null);
         Analysis analysis = new Analysis(null, ImmutableMap.of("tbprofiler_results", tbProfilerResultsFile), null, null);
@@ -125,7 +125,7 @@ public class TBProfilerPluginUpdaterTest {
 
     @Test
     public void testParseTbProfilerResultsFile() throws Throwable {
-        Path tbProfilerResultsFilePath = Paths.get(ClassLoader.getSystemResource("SRR10686529_tbprofiler_results.json").toURI());
+        Path tbProfilerResultsFilePath = Paths.get(ClassLoader.getSystemResource("SRR13870426_tbprofiler_results.json").toURI());
         Map<String, String> teTyperSummary = updater.parseTbProfilerResultsFile(tbProfilerResultsFilePath);
             assertThat(teTyperSummary, IsMapContaining.hasKey("pct_reads_mapped"));
             assertThat(teTyperSummary, IsMapContaining.hasKey("drtype"));

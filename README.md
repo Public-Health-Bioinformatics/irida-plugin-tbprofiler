@@ -30,12 +30,12 @@ This can be used to determine the sequence type of specific transposable element
 In order to use this pipeline, you will also have to install the following Galaxy tools and data 
 managers within your Galaxy instance. These can be found at:
 
-| Name                       | Version          | Owner                          | Metadata Revision | Galaxy Toolshed Link                                                                          |
-|----------------------------|------------------|------------------------------- |-------------------|-----------------------------------------------------------------------------------------------|
-| fastp                      | `0.23.2+galaxy0` | `iuc`                          | 10 (2022-02-03)   | [fastp-10:65b93b623c77](https://toolshed.g2.bx.psu.edu/view/iuc/fastp/65b93b623c77) |
-| fastp_json_to_tabular      | `0.1.0`          | `public-health-bioinformatics` |  0 (2022-03-10)   | [fastp_json_to_tabular-0:091a2fb2e7ad](https://toolshed.g2.bx.psu.edu/view/public-health-bioinformatics/fastp_json_to_tabular/091a2fb2e7ad) |
-| tbprofiler                 | `4.1.1+galaxy0`  | `iuc`                          | 14 (2022-03-16)   | [tbprofiler-14:ac8250086ac3](https://toolshed.g2.bx.psu.edu/view/iuc/tbprofiler/ac8250086ac3) |
-| tbprofiler_json_to_tabular | `0.1.0+galaxy2`  | `dfornika`                     |  5 (2022-10-24)   | [tbprofiler_json_to_tabular-5:90d6f1633abc](https://testtoolshed.g2.bx.psu.edu/view/dfornika/tbprofiler_json_to_tabular/90d6f1633abc) |
+| Name                       | Version          | Owner                          | Metadata Revision | Galaxy Toolshed Link                                                                                                                                  |
+|----------------------------|------------------|--------------------------------|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| fastp                      | `0.23.2+galaxy0` | `iuc`                          | 10 (2022-02-03)   | [fastp-10:65b93b623c77](https://toolshed.g2.bx.psu.edu/view/iuc/fastp/65b93b623c77)                                                                   |
+| fastp_json_to_tabular      | `0.1.0`          | `public-health-bioinformatics` | 0 (2022-03-10)    | [fastp_json_to_tabular-0:091a2fb2e7ad](https://toolshed.g2.bx.psu.edu/view/public-health-bioinformatics/fastp_json_to_tabular/091a2fb2e7ad)           |
+| tbprofiler                 | `4.1.1+galaxy0`  | `iuc`                          | 14 (2022-03-16)   | [tbprofiler-14:ac8250086ac3](https://toolshed.g2.bx.psu.edu/view/iuc/tbprofiler/ac8250086ac3)                                                         |
+| tbprofiler_json_to_tabular | `0.1.0+galaxy2`  | `public-health-bioinformatics` | 0 (2023-09-19)    | [tbprofiler_json_to_tabular-0:3e0d5ceeeb0f](https://toolshed.g2.bx.psu.edu/view/public-health-bioinformatics/tbprofiler_json_to_tabular/3e0d5ceeeb0f)             |
 
 ## Installing to IRIDA
 

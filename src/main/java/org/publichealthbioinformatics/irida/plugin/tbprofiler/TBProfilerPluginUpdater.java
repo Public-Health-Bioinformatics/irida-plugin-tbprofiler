@@ -77,6 +77,30 @@ public class TBProfilerPluginUpdater implements AnalysisSampleUpdater {
 		AnalysisOutputFile tbprofilerResultsAnalysisOutputFile = analysis.getAnalysis().getAnalysisOutputFile("tbprofiler_results");
 		Path tbProfilerResultsFilePath = tbprofilerResultsAnalysisOutputFile.getFile();
 
+		List<String> drugList= Arrays.asList(
+				"rifampicin",
+				"isoniazid",
+				"ethambutol",
+				"pyrazinamide",
+				"streptomycin",
+				"fluoroquinolones",
+				"moxifloxacin",
+				"ofloxacin",
+				"levofloxacin",
+				"ciprofloxacin",
+				"aminoglycosides",
+				"amikacin",
+				"capreomycin",
+				"kanamycin",
+				"cycloserine",
+				"ethionamide",
+				"clofazimine",
+				"para-aminosalicylic_acid",
+				"delamanid",
+				"bedaquiline",
+				"linezolid"
+		);
+
 		try {
 			Map<String, MetadataEntry> metadataEntries = new HashMap<>();
 
@@ -93,6 +117,10 @@ public class TBProfilerPluginUpdater implements AnalysisSampleUpdater {
 			String resistanceType = tbProfilerResults.get("drtype");
 			String mainLineage = tbProfilerResults.get("main_lin").replaceFirst("^lineage", "");
 			String subLineage = tbProfilerResults.get("sublin").replaceFirst("^lineage", "");
+			String tbprofilerVersion = tbProfilerResults.get("tbprofiler_version");
+			String dbName = tbProfilerResults.get("db_name");
+			String dbCommit = tbProfilerResults.get("db_commit");
+			String dbDate = tbProfilerResults.get("db_date");
 
 			String key = "";
 
@@ -113,6 +141,34 @@ public class TBProfilerPluginUpdater implements AnalysisSampleUpdater {
 			key = workflowName + "/sub_lineage";
 			metadataEntries.put(key, tbProfilerSubLineageEntry);
 
+			PipelineProvidedMetadataEntry tbProfilerTbprofilerVersionEntry = new PipelineProvidedMetadataEntry(tbprofilerVersion, "xs:string", analysis);
+			key = workflowName + "/tbprofiler_version";
+			metadataEntries.put(key, tbProfilerTbprofilerVersionEntry);
+
+			PipelineProvidedMetadataEntry tbProfilerDbNameEntry = new PipelineProvidedMetadataEntry(dbName, "xs:string", analysis);
+			key = workflowName + "/db_name";
+			metadataEntries.put(key, tbProfilerDbNameEntry);
+
+			PipelineProvidedMetadataEntry tbProfilerDbCommitEntry = new PipelineProvidedMetadataEntry(dbCommit, "xs:string", analysis);
+			key = workflowName + "/db_commit";
+			metadataEntries.put(key, tbProfilerDbCommitEntry);
+
+			PipelineProvidedMetadataEntry tbProfilerDbDateEntry = new PipelineProvidedMetadataEntry(dbDate, "xs:string", analysis);
+			key = workflowName + "/db_date";
+			metadataEntries.put(key, tbProfilerDbDateEntry);
+
+			for (String drug : drugList) {
+				String drugResistance = tbProfilerResults.get(drug + "_resistance");
+				PipelineProvidedMetadataEntry tbProfilerDrugResistanceEntry = new PipelineProvidedMetadataEntry(drugResistance, "xs:string", analysis);
+				key = workflowName + "/" + drug + "_resistance";
+				metadataEntries.put(key, tbProfilerDrugResistanceEntry);
+			}
+			for (String drug : drugList) {
+				String drugResistanceMutations = tbProfilerResults.get(drug + "_mutations");
+				PipelineProvidedMetadataEntry tbProfilerDrugMutationsEntry = new PipelineProvidedMetadataEntry(drugResistanceMutations, "xs:string", analysis);
+				key = workflowName + "/" + drug + "_mutations";
+				metadataEntries.put(key, tbProfilerDrugMutationsEntry);
+			}
 			//convert the string/entry Map to a Set of MetadataEntry
 			Set<MetadataEntry> metadataSet = metadataTemplateService.convertMetadataStringsToSet(metadataEntries);
 
@@ -155,11 +211,71 @@ public class TBProfilerPluginUpdater implements AnalysisSampleUpdater {
 
 		ObjectMapper mapper = new ObjectMapper();
 
+		List<String> drugList= Arrays.asList(
+				"rifampicin",
+				"isoniazid",
+				"ethambutol",
+				"pyrazinamide",
+				"streptomycin",
+				"fluoroquinolones",
+				"moxifloxacin",
+				"ofloxacin",
+				"levofloxacin",
+				"ciprofloxacin",
+				"aminoglycosides",
+				"amikacin",
+				"capreomycin",
+				"kanamycin",
+				"cycloserine",
+				"ethionamide",
+				"clofazimine",
+				"para-aminosalicylic_acid",
+				"delamanid",
+				"bedaquiline",
+				"linezolid"
+		);
+
 		JsonNode root = mapper.readTree(tbProfilerResultsFilePath.toFile());
 		tbProfilerReport.put("pct_reads_mapped", root.get("qc").get("pct_reads_mapped").asText());
 		tbProfilerReport.put("drtype", root.get("drtype").asText());
 		tbProfilerReport.put("main_lin", root.get("main_lin").asText());
 		tbProfilerReport.put("sublin", root.get("sublin").asText());
+		tbProfilerReport.put("tbprofiler_version", root.get("tbprofiler_version").asText());
+		tbProfilerReport.put("db_name", root.get("db_version").get("name").asText());
+		tbProfilerReport.put("db_commit", root.get("db_version").get("commit").asText());
+		tbProfilerReport.put("db_date", root.get("db_version").get("Date").asText());
+
+		for (String drug : drugList) {
+			tbProfilerReport.put(drug + "_resistance", "Sensitive");
+			tbProfilerReport.put(drug + "_mutations", "None");
+		}
+
+		Iterator<JsonNode> drVariants =  root.get("dr_variants").elements();
+		while (drVariants.hasNext()) {
+			JsonNode drVariant = drVariants.next();
+			Iterator<JsonNode> variantDrugs = drVariant.get("drugs").elements();
+			while (variantDrugs.hasNext()) {
+				JsonNode variantDrug = variantDrugs.next();
+				String drugName = variantDrug.get("drug").asText();
+				String drugConfers = variantDrug.get("confers").asText();
+				if (drugConfers.equals("resistance")) {
+					tbProfilerReport.put(drugName + "_resistance", "Resistant");
+					String geneName = drVariant.get("gene").asText();
+					String change = drVariant.get("change").asText();
+					double freq = drVariant.get("freq").asDouble();
+					String freqStr = String.format("%.2f", freq);
+					String existingMutations = tbProfilerReport.get(drugName + "_mutations");
+					if (existingMutations.equals("None")) {
+						String mutations = String.join(" ", geneName, change, "(" + freqStr + ")");
+						tbProfilerReport.put(drugName + "_mutations", mutations);
+					} else {
+						String newMutation = String.join(" ", geneName, change, "(" + freqStr + ")");
+						String mutations = String.join("; ", existingMutations, newMutation);
+						tbProfilerReport.put(drugName + "_mutations", mutations);
+					}
+				}
+			}
+		}
 
 		return tbProfilerReport;
 	}
