@@ -289,7 +289,7 @@
         },
         "4": {
             "annotation": "",
-            "content_id": "testtoolshed.g2.bx.psu.edu/repos/dfornika/tbprofiler_json_to_tabular/tbprofiler_json_to_tabular/0.1.0+galaxy2",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/public-health-bioinformatics/tbprofiler_json_to_tabular/tbprofiler_json_to_tabular/0.1.0+galaxy2",
             "errors": null,
             "id": 4,
             "input_connections": {
@@ -381,12 +381,12 @@
                     "output_name": "resistance_variants"
                 }
             },
-            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/dfornika/tbprofiler_json_to_tabular/tbprofiler_json_to_tabular/0.1.0+galaxy2",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/public-health-bioinformatics/tbprofiler_json_to_tabular/tbprofiler_json_to_tabular/0.1.0+galaxy2",
             "tool_shed_repository": {
-                "changeset_revision": "90d6f1633abc",
+                "changeset_revision": "3e0d5ceeeb0f",
                 "name": "tbprofiler_json_to_tabular",
-                "owner": "dfornika",
-                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+                "owner": "public-health-bioinformatics",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
             },
             "tool_state": "{\"report\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.0+galaxy2",

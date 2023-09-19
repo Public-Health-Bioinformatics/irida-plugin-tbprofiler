@@ -54,9 +54,9 @@
     </repository>
     <repository>
       <name>tbprofiler_json_to_tabular</name>
-      <owner>dfornika</owner>
-      <url>https://testtoolshed.g2.bx.psu.edu</url>
-      <revision>90d6f1633abc</revision>
+      <owner>public_health_bioinformatics</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>3e0d5ceeeb0f</revision>
     </repository>
   </toolRepositories>
 </iridaWorkflow>
