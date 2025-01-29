@@ -69,14 +69,14 @@ public class TBProfilerPlugin extends Plugin {
 		 * <strong>id</strong> entry in the <strong>irida_workflow.xml</strong> file.
 		 * 
 		 * <pre>
-		 * {@code <id>a2c6bcef-c976-49af-9b7b-6ea8b86ea5cf</id>}
+		 * {@code <id>c4c5f3bb-6a0a-4a56-859e-b528834b5119</id>}
 		 * </pre>
 		 * 
 		 * @return A {@link UUID} defining the id of this pipeline.
 		 */
 		@Override
 		public UUID getDefaultWorkflowUUID() {
-			return UUID.fromString("a2c6bcef-c976-49af-9b7b-6ea8b86ea5cf");
+			return UUID.fromString("c4c5f3bb-6a0a-4a56-859e-b528834b5119");
 		}
 
 		/*******************************************************************************
